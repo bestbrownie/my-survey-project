@@ -28,18 +28,35 @@
             document.getElementById("surveyForm").reset();
         }
     </script>
+<!!--Firebase SDK---!!>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDCTJzlo1yQmkVXJ8TA6Er3J50lcKNlfOM",
+    authDomain: "savings-test-ed732.firebaseapp.com",
+    databaseURL: "https://savings-test-ed732-default-rtdb.firebaseio.com",
+    projectId: "savings-test-ed732",
+    storageBucket: "savings-test-ed732.appspot.com",
+    messagingSenderId: "881868564397",
+    appId: "1:881868564397:web:209ad3ef1b999232ee2324",
+    measurementId: "G-Y23W5L3D9D"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </head>
 <body>
     <h2>評價您的應用程式體驗</h2>
-    <!-- 嵌入 Google Forms 的代碼 -->
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf1kK5hH4Cd6z3YkHdf2BKHsWjf3Gp8lR9Jr2Z4GnR8Xrp1NQ/viewform?embedded=true" 
-            width="640" 
-            height="800" 
-            frameborder="0" 
-            marginheight="0" 
-            marginwidth="0">
-        載入中…
-    </iframe>
+   
     <form id="surveyForm" onsubmit="event.preventDefault(); submitForm();">
 
         <p>1. 您對這次挑戰的整體滿意度如何？</p>
