@@ -33,11 +33,9 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
   // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyDCTJzlo1yQmkVXJ8TA6Er3J50lcKNlfOM",
     authDomain: "savings-test-ed732.firebaseapp.com",
@@ -53,34 +51,33 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 
-   // Initialize Firebase Realtime Database
-      const database = getDatabase(app);
+  // Initialize Firebase Realtime Database
+  const database = getDatabase(app);
 
-      function saveSurveyData(data) {
-        // Create a unique ID for each survey submission
-        const newSubmissionRef = ref(database, 'submissions/' + Date.now());
-        set(newSubmissionRef, data).then(() => {
-          console.log("Data saved successfully!");
-        }).catch((error) => {
-          console.error("Error saving data: ", error);
-        });
-      }
+  function saveSurveyData(data) {
+    // Create a unique ID for each survey submission
+    const newSubmissionRef = ref(database, 'submissions/' + Date.now());
+    set(newSubmissionRef, data).then(() => {
+      console.log("Data saved successfully!");
+    }).catch((error) => {
+      console.error("Error saving data: ", error);
+    });
+  }
 
-      // Example data to save
-      const surveyData = {
-        satisfaction: "1",
-        difficulty: "medium",
-        helpfulFeatures: ["challengeReminder"],
-        encounteredProblems: "no",
-        problemDescription: "",
-        improvements: ["notifications"],
-        recommend: "maybe",
-        otherFeedback: "TEST"
-      };
+  // Example data to save
+  const surveyData = {
+    satisfaction: "1",
+    difficulty: "medium",
+    helpfulFeatures: ["challengeReminder"],
+    encounteredProblems: "no",
+    problemDescription: "",
+    improvements: ["notifications"],
+    recommend: "maybe",
+    otherFeedback: "TEST"
+  };
 
-      // Save the survey data
-      saveSurveyData(surveyData);
-   
+  // Save the survey data
+  saveSurveyData(surveyData);
 </script>
 </head>
 <body>
