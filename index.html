@@ -9,33 +9,31 @@
         window.surveyResults = [];
 
         function submitForm() {
-            // 取得表單數據
-            const data = {
-                satisfaction: document.querySelector('input[name="satisfaction"]:checked').value,
-                difficulty: document.querySelector('input[name="difficulty"]:checked').value,
-                helpfulFeatures: Array.from(document.querySelectorAll('input[name="helpfulFeatures"]:checked')).map(input => input.value),
-                encounteredProblems: document.querySelector('input[name="encounteredProblems"]:checked').value,
-                problemDescription: document.getElementById('problemDescription').value,
-                improvements: Array.from(document.querySelectorAll('input[name="improvements"]:checked')).map(input => input.value),
-                recommend: document.querySelector('input[name="recommend"]:checked').value,
-                otherFeedback: document.getElementById('otherFeedback').value
-            };
+    // 取得表單數據
+    const data = {
+        satisfaction: document.querySelector('input[name="satisfaction"]:checked').value,
+        difficulty: document.querySelector('input[name="difficulty"]:checked').value,
+        helpfulFeatures: Array.from(document.querySelectorAll('input[name="helpfulFeatures"]:checked')).map(input => input.value),
+        encounteredProblems: document.querySelector('input[name="encounteredProblems"]:checked').value,
+        problemDescription: document.getElementById('problemDescription').value,
+        improvements: Array.from(document.querySelectorAll('input[name="improvements"]:checked')).map(input => input.value),
+        recommend: document.querySelector('input[name="recommend"]:checked').value,
+        otherFeedback: document.getElementById('otherFeedback').value
+    };
 
-            // 将数据存储到全局变量中
-            window.surveyResults.push(data);
+    // 存儲數據到本地存儲
+    localStorage.setItem('surveyData', JSON.stringify(data));
 
-            // 将数据转化为JSON并显示在控制台
-            console.log("問卷提交的數據：", JSON.stringify(window.surveyResults));
+    // 提交成功提示
+    alert("问卷提交成功！感谢您的回复！");
+    
+    // 清除表单
+    document.getElementById("surveyForm").reset();
 
-            // 模拟表单提交成功的提示
-            alert("問卷提交成功！感謝您的回覆！");
-            
-            // 清除表單
-            document.getElementById("surveyForm").reset();
-            
-            // 可以选择自动跳转到结果页面
-            window.location.href = 'results.html'; // 假设结果页面名为 results.html
-        }
+    // 可以选择自动跳转到结果页面
+    window.location.href = 'results.html'; // 假设结果页面名为 results.html
+}
+
     </script>
 </head>
 <body>
