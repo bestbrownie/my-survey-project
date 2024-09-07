@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>問卷結果</title>
+</head>
+<body>
+    <h2>問卷結果</h2>
+    <div id="results"></div>
+
+    <script>
+        // 从 localStorage 中读取数据并显示
+        const storedData = JSON.parse(localStorage.getItem('surveyData'));
+        if (storedData) {
+            document.getElementById('results').innerHTML = `
+                <p>满意度: ${storedData.satisfaction}</p>
+                <p>难度: ${storedData.difficulty}</p>
+                <p>有用的功能: ${storedData.helpfulFeatures.join(', ')}</p>
+                <p>遇到的问题: ${storedData.encounteredProblems}</p>
+                <p>问题描述: ${storedData.problemDescription}</p>
+                <p>改进建议: ${storedData.improvements.join(', ')}</p>
+                <p>推荐: ${storedData.recommend}</p>
+                <p>其他反馈: ${storedData.otherFeedback}</p>
+            `;
+        } else {
+            document.getElementById('results').innerHTML = '<p>没有找到提交的数据。</p>';
+        }
+    </script>
+</body>
+</html>
