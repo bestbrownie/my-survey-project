@@ -28,57 +28,7 @@
             document.getElementById("surveyForm").reset();
         }
     </script>
-<!-- Firebase SDK 配置代碼 -->
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
-  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDCTJzlo1yQmkVXJ8TA6Er3J50lcKNlfOM",
-    authDomain: "savings-test-ed732.firebaseapp.com",
-    databaseURL: "https://savings-test-ed732-default-rtdb.firebaseio.com",
-    projectId: "savings-test-ed732",
-    storageBucket: "savings-test-ed732.appspot.com",
-    messagingSenderId: "881868564397",
-    appId: "1:881868564397:web:209ad3ef1b999232ee2324",
-    measurementId: "G-Y23W5L3D9D"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-
-  // Initialize Firebase Realtime Database
-  const database = getDatabase(app);
-
-  function saveSurveyData(data) {
-    // Create a unique ID for each survey submission
-    const newSubmissionRef = ref(database, 'submissions/' + Date.now());
-    set(newSubmissionRef, data).then(() => {
-      console.log("Data saved successfully!");
-    }).catch((error) => {
-      console.error("Error saving data: ", error);
-    });
-  }
-
-  // Example data to save
-  const surveyData = {
-    satisfaction: "1",
-    difficulty: "medium",
-    helpfulFeatures: ["challengeReminder"],
-    encounteredProblems: "no",
-    problemDescription: "",
-    improvements: ["notifications"],
-    recommend: "maybe",
-    otherFeedback: "TEST"
-  };
-
-  // Save the survey data
-  saveSurveyData(surveyData);
-</script>
 </head>
 <body>
     <h2>評價您的應用程式體驗</h2>
