@@ -19,13 +19,16 @@
             };
 
             // 將數據轉換為JSON並顯示在控制台
-            console.log(JSON.stringify(data));
+            console.log("問卷提交的數據：", JSON.stringify(data));
 
             // 模擬表單提交成功的提示
             alert("問卷提交成功！感謝您的回覆！");
             
             // 清除表單
             document.getElementById("surveyForm").reset();
+
+            // 將數據存儲到前端變量或本地存儲
+            localStorage.setItem('surveyData', JSON.stringify(data));
         }
     </script>
 
