@@ -4,28 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>問卷結果</title>
+    <style>
+        /* CSS 代碼，用於將內容和文字置中 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center; /* 修正拼写错误 */
+        }
+        .result-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-    <h2>問卷結果</h2>
-    <div id="results"></div>
+    <div class="result-container">
+        <h2>問卷結果</h2>
+        <div id="results"></div>
 
-    <script>
-        // 从 localStorage 中读取数据并显示
-        const storedData = JSON.parse(localStorage.getItem('surveyData'));
-        if (storedData) {
-            document.getElementById('results').innerHTML = `
-                <p>满意度: ${storedData.satisfaction}</p>
-                <p>难度: ${storedData.difficulty}</p>
-                <p>有用的功能: ${storedData.helpfulFeatures.join(', ')}</p>
-                <p>遇到的问题: ${storedData.encounteredProblems}</p>
-                <p>问题描述: ${storedData.problemDescription}</p>
-                <p>改进建议: ${storedData.improvements.join(', ')}</p>
-                <p>推荐: ${storedData.recommend}</p>
-                <p>其他反馈: ${storedData.otherFeedback}</p>
-            `;
-        } else {
-            document.getElementById('results').innerHTML = '<p>没有找到提交的数据。</p>';
-        }
-    </script>
+        <script>
+            // 从 localStorage 中读取数据并显示
+            const storedData = JSON.parse(localStorage.getItem('surveyData'));
+            if (storedData) {
+                document.getElementById('results').innerHTML = `
+                    <p>滿意度: ${storedData.satisfaction}</p>
+                    <p>難度: ${storedData.difficulty}</p>
+                    <p>有用的功能: ${storedData.helpfulFeatures.join(', ')}</p>
+                    <p>遇到的問題: ${storedData.encounteredProblems}</p>
+                    <p>問題描述: ${storedData.problemDescription}</p>
+                    <p>改進建議: ${storedData.improvements.join(', ')}</p>
+                    <p>推薦: ${storedData.recommend}</p>
+                    <p>其他反饋: ${storedData.otherFeedback}</p>
+                `;
+            } else {
+                document.getElementById('results').innerHTML = '<p>沒有找到提交的數據。</p>';
+            }
+        </script>
+    </div>
 </body>
 </html>
