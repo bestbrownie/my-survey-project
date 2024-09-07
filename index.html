@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>應用程式體驗問卷調查</title>
     <script>
+        // 创建一个全局变量来存储问卷结果
+        window.surveyResults = [];
+
         function submitForm() {
             // 取得表單數據
             const data = {
@@ -18,26 +21,25 @@
                 otherFeedback: document.getElementById('otherFeedback').value
             };
 
-            // 將數據轉換為JSON並顯示在控制台
-            console.log("問卷提交的數據：", JSON.stringify(data));
+            // 将数据存储到全局变量中
+            window.surveyResults.push(data);
 
-            // 模擬表單提交成功的提示
+            // 将数据转化为JSON并显示在控制台
+            console.log("問卷提交的數據：", JSON.stringify(window.surveyResults));
+
+            // 模拟表单提交成功的提示
             alert("問卷提交成功！感謝您的回覆！");
             
             // 清除表單
             document.getElementById("surveyForm").reset();
-
-            // 將數據存儲到前端變量或本地存儲
-            localStorage.setItem('surveyData', JSON.stringify(data));
         }
     </script>
-
 </head>
 <body>
     <h2>評價您的應用程式體驗</h2>
    
     <form id="surveyForm" onsubmit="event.preventDefault(); submitForm();">
-
+        <!-- 表单内容保持不变 -->
         <p>1. 您對這次挑戰的整體滿意度如何？</p>
         <input type="radio" name="satisfaction" value="1" required> 1
         <input type="radio" name="satisfaction" value="2"> 2
